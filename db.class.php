@@ -3,16 +3,23 @@
 class db {
 
 	//host
-	private $host = 'localhost';
+	private $host;
 
 	//usuario
-	private $usuario = 'root';
+	private $usuario;
 
 	//senha
-	private $senha = '';
+	private $senha;
 
 	//banco de dados
-	private $database = 'twitter_clone';
+	private $database;
+
+	public function __construct(){
+		$this->host     = getenv('DB_HOST') ?: 'localhost';
+		$this->usuario  = getenv('DB_USER') ?: 'root';
+		$this->senha    = getenv('DB_PASS') ?: '';
+		$this->database = getenv('DB_NAME') ?: 'twitter_clone';
+	}
 
 	public function conecta_mysql(){
 
